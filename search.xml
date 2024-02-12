@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>AR定位</title>
+      <link href="/2024/02/08/AR%E5%AE%9A%E4%BD%8D/"/>
+      <url>/2024/02/08/AR%E5%AE%9A%E4%BD%8D/</url>
+      
+        <content type="html"><![CDATA[<h3 id="一、AR-Foundation扫码"><a href="#一、AR-Foundation扫码" class="headerlink" title="一、AR Foundation扫码"></a>一、AR Foundation扫码</h3><h4 id="ARTrackedImageManager"><a href="#ARTrackedImageManager" class="headerlink" title="ARTrackedImageManager"></a>ARTrackedImageManager</h4><p>监听trackedImagesChanged回调</p><h3 id="二、vuforia环境识别"><a href="#二、vuforia环境识别" class="headerlink" title="二、vuforia环境识别"></a>二、vuforia环境识别</h3><ul><li>使用Vuforia Creator扫描环境</li><li>导出package到unity</li><li>AreaTargetBehaviour的Database选择扫描环境保存时的命名</li><li>继承DefaultObserverEventHandler的处理句柄，OnTrackingFound和OnTrackingLost分别是对环境追踪的识别和丢失方法</li><li>注：AreaTarget下这个句柄会让所有带材质的物体显示出来</li><li>注：如果识别后频繁抖动，把相机上的VuforiaBehaviour和DefaultInitializationErrorHandler去除，仅使用ARFoundation的脚本即可</li></ul>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo+github搭建个人博客</title>
       <link href="/2024/02/08/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/"/>
       <url>/2024/02/08/hexo-github%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</url>
