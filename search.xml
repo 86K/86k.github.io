@@ -31,6 +31,14 @@
       
       
       
+        <tags>
+            
+            <tag> ar </tag>
+            
+            <tag> locate </tag>
+            
+        </tags>
+      
     </entry>
     
     
@@ -43,6 +51,12 @@
         <content type="html"><![CDATA[<h2 id="一、环境准备"><a href="#一、环境准备" class="headerlink" title="一、环境准备"></a>一、环境准备</h2><ul><li>安装npm</li><li>安装hexo</li></ul><h2 id="二、博客准备"><a href="#二、博客准备" class="headerlink" title="二、博客准备"></a>二、博客准备</h2><p>hexo官网 -&gt; <a href="https://hexo.io/index.html">https://hexo.io/index.html</a></p><ul><li>##全局安装hexo</li><li>npm install hexo-cli -g</li><li>##hexo初始化</li><li>hexo init blog</li><li>##跳转到blog目录</li><li>cd blog</li><li>##安装npm包</li><li>npm install</li><li>##把下载的主题放到themes文件夹下</li><li>主题官网：<a href="https://github.com/probberechts/hexo-theme-cactus">https://github.com/probberechts/hexo-theme-cactus</a></li><li>##修改_config.yml中theme:xxx，xxx为主题文件夹名字</li><li>##创建一篇新博文</li><li>hexo new “博文名字”</li><li>##在博客目录下生成静态页面</li><li>hexo g</li><li>##启动博客的本地服务器</li><li>hexo s</li></ul><h2 id="三、发布到github"><a href="#三、发布到github" class="headerlink" title="三、发布到github"></a>三、发布到github</h2><ul><li>##仓库settings下设置github pages</li><li>branch和domain设置（一般仓库名xxx.github.io，xxx与github账户名一致）</li><li>##deploy下修改</li><li>type: git</li><li>repo: 仓库地址 </li><li>branch: master</li><li>##安装hexo-deployer-git</li><li>npm install hexo-deployer-git –save</li><li>##部署（可能需要配置邮箱和名字）</li><li>hexo d</li></ul><h2 id="四、参考"><a href="#四、参考" class="headerlink" title="四、参考"></a>四、参考</h2><ul><li>[hexo+github] <a href="https://www.bilibili.com/video/BV1cW411A7Jx?p=1&vd_source=de8b0351755f6d1a0bbea0bc7b0fe838">https://www.bilibili.com/video/BV1cW411A7Jx?p=1&amp;vd_source=de8b0351755f6d1a0bbea0bc7b0fe838</a></li><li>[hexo+gitee] <a href="https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&vd_source=de8b0351755f6d1a0bbea0bc7b0fe838">https://www.bilibili.com/video/BV1ts4y1f7Gu/?spm_id_from=333.337.search-card.all.click&amp;vd_source=de8b0351755f6d1a0bbea0bc7b0fe838</a></li></ul>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> tutorial </tag>
+            
+        </tags>
       
     </entry>
     
