@@ -1163,7 +1163,7 @@ article .content blockquote:before {
   line-height: 0.1em;
 }
 article .content blockquote footer {
-  margin: line-height 0;
+  /*margin: line-height 0;*/
   color: #908d8d;
   font-size: 12px;
 }
@@ -1630,7 +1630,7 @@ code {
   color: #a6a4a4;
 }
 .highlight figcaption:before,
-.highlight figcaption content: "" {
+.highlight figcaption content： {
   display: table;
 }
 .highlight figcaption:after {
