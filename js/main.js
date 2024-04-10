@@ -62,7 +62,7 @@ $(document).ready(function() {
         if (!nav.is(":visible") && topDistance < 50) {
           nav.show();
         } else if (nav.is(":visible") && topDistance > 100) {
-          nav.hide();
+          // nav.hide();
         }
 
         // on tablet, hide the navigation icon as well and show a "scroll to top
@@ -71,7 +71,7 @@ $(document).ready(function() {
           $("#menu-icon-tablet").show();
           // $("#top-icon-tablet").hide();
         } else if (! $( "#menu-icon" ).is(":visible") && topDistance > 100) {
-          $("#menu-icon-tablet").hide();
+          // $("#menu-icon-tablet").hide();
           $("#top-icon-tablet").show();
         }
       });
@@ -86,27 +86,28 @@ $(document).ready(function() {
       $(window).on("scroll", function() {
         var topDistance = $(window).scrollTop();
 
-        if (topDistance > lastScrollTop){
-          // downscroll -> show menu
-          $("#footer-post").hide();
-        } else {
-          // upscroll -> hide menu
-          $("#footer-post").show();
-        }
+        // if (topDistance > lastScrollTop){
+        //   // downscroll -> show menu
+        //   // $("#footer-post").hide();
+        // } else {
+        //   // upscroll -> hide menu
+        //   $("#footer-post").show();
+        // }
+
         lastScrollTop = topDistance;
 
         // close all submenu"s on scroll
-        $("#nav-footer").hide();
-        $("#toc-footer").hide();
+        // $("#nav-footer").hide();
+        // $("#toc-footer").hide();
         $("#share-footer").hide();
 
         // show a "navigation" icon when close to the top of the page, 
         // otherwise show a "scroll to the top" icon
-        if (topDistance < 50) {
-          $("#actions-footer > #top").hide();
-        } else if (topDistance > 100) {
-          $("#actions-footer > #top").show();
-        }
+        // if (topDistance < 50) {
+        //   // $("#actions-footer > #top").hide();
+        // } else if (topDistance > 100) {
+        //   $("#actions-footer > #top").show();
+        // }
       });
     }
   }
