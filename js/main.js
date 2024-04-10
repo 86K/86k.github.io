@@ -37,20 +37,24 @@ $(document).ready(function() {
     //   menuIcon.addClass("active");
     // }
 
+    /*
+    * NOTE：
+    * 修改文章页右上角的menu
+    * menu菜单常驻
+    * 去除share
+    */
+
     /**
      * Display the menu if the menu icon is clicked.
      */
     menuIcon.click(function() {
-      // if (menu.is(":hidden")) {
-      //   menu.show();
-      //   menuIcon.addClass("active");
-      // } else {
-      //   menu.hide();
-      //   menuIcon.removeClass("active");
-      // }
-
-      menu.show();
-      menuIcon.addClass("active");
+      if (menu.is(":hidden")) {
+        menu.show();
+        // menuIcon.addClass("active");
+      } else {
+        menu.hide();
+        // menuIcon.removeClass("active");
+      }
 
       return false;
     });
