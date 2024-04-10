@@ -69,7 +69,7 @@ $(document).ready(function() {
         // icon" instead
         if ( ! $( "#menu-icon" ).is(":visible") && topDistance < 50 ) {
           $("#menu-icon-tablet").show();
-          $("#top-icon-tablet").hide();
+          // $("#top-icon-tablet").hide();
         } else if (! $( "#menu-icon" ).is(":visible") && topDistance > 100) {
           $("#menu-icon-tablet").hide();
           $("#top-icon-tablet").show();
