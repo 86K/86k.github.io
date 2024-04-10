@@ -4,13 +4,38 @@
   
     
     <entry>
+      <title>visionOS上架指南</title>
+      <link href="/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/"/>
+      <url>/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、官方网址"><a href="#一、官方网址" class="headerlink" title="一、官方网址"></a>一、官方网址</h2><p><a href="https://developer.apple.com/cn/app-store/submitting/">官方地址(总提交页)</a><br><a href="https://appstoreconnect.apple.com/apps">使用App Store Connect进行提交App</a></p><h2 id="二、提交流程"><a href="#二、提交流程" class="headerlink" title="二、提交流程"></a>二、提交流程</h2><h3 id="App-Store-Connect-App"><a href="#App-Store-Connect-App" class="headerlink" title="App Store Connect -&gt; App -&gt; +"></a>App Store Connect -&gt; App -&gt; +</h3><h4 id="注册套装ID"><a href="#注册套装ID" class="headerlink" title="注册套装ID"></a><a href="https://developer.apple.com/account/resources/identifiers/bundleId/add/bundle">注册套装ID</a></h4><ul><li>Description：应用程序名称</li><li>Bundle：com.company.product<br>注：注册一个app ID之后，则可以在新建App页面的“套装ID”项中进行选取。</li></ul><h4 id="SKU（Stock-Keeping-Unit）"><a href="#SKU（Stock-Keeping-Unit）" class="headerlink" title="SKU（Stock Keeping Unit）"></a>SKU（Stock Keeping Unit）</h4><p>App ID Prefix + Bundle ID</p><hr><h3 id="1-0准备提交"><a href="#1-0准备提交" class="headerlink" title="1.0准备提交"></a><a href="https://appstoreconnect.apple.com/apps/6482985281/distribution/visionos/version/inflight">1.0准备提交</a></h3><h4 id="准备预览图和截屏（3840-x-2160px）"><a href="#准备预览图和截屏（3840-x-2160px）" class="headerlink" title="准备预览图和截屏（3840 x 2160px）"></a>准备预览图和截屏（3840 x 2160px）</h4><ul><li>注：模拟器截图分辨率是2732x2048。</li><li>填写必要信息</li></ul><h4 id="xcode分发"><a href="#xcode分发" class="headerlink" title="xcode分发"></a><a href="https://developer.apple.com/documentation/xcode/distributing-your-app-for-beta-testing-and-releases">xcode分发</a></h4><ul><li>必须选择一个构建版本</li><li>必须要定价中选择价格等级</li><li>必须在“App 隐私”页面输入隐私政策网址。不搜集任何数据，则不用填写隐私政策网址。</li><li>必须在App信息中设置内容版权信息</li><li>…  这些在点击“添加以供审核”按钮时，会提示</li></ul><h2 id="三、注意事项"><a href="#三、注意事项" class="headerlink" title="三、注意事项"></a>三、注意事项</h2><ul><li>开发时，用Play to Device + 模拟器，Target SDK为Simulator SDK</li><li><strong>发布上架时，Target SDK选Device SDK！！！</strong> 如果选的时Simulator SDK，archive之后无法distribute</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> visionOS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>visionOS开发指南</title>
       <link href="/2024/04/10/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
       <url>/2024/04/10/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="一、开发环境准备"><a href="#一、开发环境准备" class="headerlink" title="一、开发环境准备"></a>一、开发环境准备</h2><ul><li>必须Unity Pro、Enterprise、Industry。如果是Unity Personal或者Plus，<a href="https://unity.com/pages/pro-free-trial">Unity Pro适用申请</a></li><li>必须Apple Silicon + 国际版Unity(VisionOS Build Support(experimental))</li><li>Xcode下载Apple Vision Pro Simulator</li><li><a href="https://drive.google.com/drive/folders/1Oe-6bBCCmk7okbK832HWiYFbM8mV0XrZ">下载对应版本的VisionOS Template</a></li><li><a href="https://drive.google.com/drive/folders/1ZmWoS6NhrrmvabYia79hlvbyPV1mUN2p">下载对应版本的Play to Device Host</a></li></ul><h2 id="二、模拟器"><a href="#二、模拟器" class="headerlink" title="二、模拟器"></a>二、模拟器</h2><ul><li>切换为VisionOS(experimental)平台</li><li>Player中的Target Device选择Simulator SDK</li><li>PloySpatial配置；XR Plugin-in Management中勾选Apple visionOS；选择App Mode，填写Hands Tracking、World Sensing的描述；Fix Validation Rules。如果使用模版工程，则已经配置好了。</li><li>Build之后，用xcode打开，选择模拟器</li><li>下载的Play to Device Host.app拖入模拟器，Unity的Window-&gt;PolySpatial-&gt;Play to Device窗口中填入模拟器中Play to Device Host的ip，即可实时预览编辑器的内容</li></ul><h2 id="三、真机"><a href="#三、真机" class="headerlink" title="三、真机"></a>三、真机</h2><ul><li>TODO</li></ul>]]></content>
       
       
+      
+        <tags>
+            
+            <tag> visionOS </tag>
+            
+        </tags>
       
     </entry>
     
