@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="MVC、MVVM、ECS、IOC等框架思想启示我们，应该把数据和逻辑进行解耦。抽象逻辑或者某一类的业务逻辑是可以通用，或者说便于修改的。数据可以来源于真实或者人为创建，以数据驱动逻辑验证软件。  一、全局静态数据 享受全局静态变量带来的便利时，要注意其危害性：控制其规模、读写限制、内存释放。  逻辑 足够抽象、纯算法、复用次数多的逻辑，可以归类为工具、辅助器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据与逻辑">
+<meta property="og:url" content="https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/index.html">
+<meta property="og:site_name" content="itsxwz">
+<meta property="og:description" content="MVC、MVVM、ECS、IOC等框架思想启示我们，应该把数据和逻辑进行解耦。抽象逻辑或者某一类的业务逻辑是可以通用，或者说便于修改的。数据可以来源于真实或者人为创建，以数据驱动逻辑验证软件。  一、全局静态数据 享受全局静态变量带来的便利时，要注意其危害性：控制其规模、读写限制、内存释放。  逻辑 足够抽象、纯算法、复用次数多的逻辑，可以归类为工具、辅助器">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-04-12T08:32:34.000Z">
+<meta property="article:modified_time" content="2024-04-12T09:19:41.333Z">
+<meta property="article:author" content="itsxwz">
+<meta property="article:tag" content="experience">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/icon.jpg">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/icon.jpg" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/icon.jpg">
+        
+      
+    
+    <!-- title -->
+    <title>数据与逻辑</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-86660611-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-86660611-1');
+  </script>
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a href="/tag/">标签</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/search/">搜索</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+<!--        <li><a class="icon" aria-label="post.desktop.share" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>-->
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+<!--      <span id="i-share" class="info" style="display:none;">post.desktop.share</span>-->
+      <!--NOTE：这里屏蔽share页-->
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <!--分享文章的链接-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&text=数据与逻辑"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&is_video=false&description=数据与逻辑"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" href="mailto:?subject=数据与逻辑&body=Check out this article: https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-digg " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&name=数据与逻辑&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&t=数据与逻辑"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>-->
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E9%9D%99%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">一、全局静态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">逻辑</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        数据与逻辑
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">itsxwz</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2024-04-12T08:32:34.000Z" class="dt-published" itemprop="datePublished">2024-04-12</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/experience/" rel="tag">experience</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <blockquote>
+<p>MVC、MVVM、ECS、IOC等框架思想启示我们，应该把数据和逻辑进行解耦。<br>抽象逻辑或者某一类的业务逻辑是可以通用，或者说便于修改的。<br>数据可以来源于真实或者人为创建，以数据驱动逻辑验证软件。</p>
+</blockquote>
+<h2 id="一、全局静态"><a href="#一、全局静态" class="headerlink" title="一、全局静态"></a>一、全局静态</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><blockquote>
+<p>享受全局静态变量带来的便利时，要注意其危害性：<br>控制其规模、读写限制、内存释放。</p>
+</blockquote>
+<h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><ul>
+<li>足够抽象、纯算法、复用次数多的逻辑，可以归类为工具、辅助器</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">首页</a></li>
+        
+          <li><a href="/archives/">归档</a></li>
+        
+          <li><a href="/tag/">标签</a></li>
+        
+          <li><a href="/about/">关于</a></li>
+        
+          <li><a href="/search/">搜索</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%85%A8%E5%B1%80%E9%9D%99%E6%80%81"><span class="toc-number">1.</span> <span class="toc-text">一、全局静态</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE"><span class="toc-number">1.1.</span> <span class="toc-text">数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%BB%E8%BE%91"><span class="toc-number">1.2.</span> <span class="toc-text">逻辑</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <!--分享文章的链接-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&text=数据与逻辑"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&is_video=false&description=数据与逻辑"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" href="mailto:?subject=数据与逻辑&body=Check out this article: https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&title=数据与逻辑"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&name=数据与逻辑&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>-->
+<!--  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://86k.github.io/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/&t=数据与逻辑"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>-->
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> post.mobile.share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2018-2024
+    itsxwz
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+          --><li><a href="/">首页</a></li><!--
+        --><!--
+          --><li><a href="/archives/">归档</a></li><!--
+        --><!--
+          --><li><a href="/tag/">标签</a></li><!--
+        --><!--
+          --><li><a href="/about/">关于</a></li><!--
+        --><!--
+          --><li><a href="/search/">搜索</a></li><!--
+        -->
+      </ul>
+      <ul>
+          <!--开启访问量统计 也可放到header中-->
+        
+      </ul>
+    </nav>
+  </div>
+
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

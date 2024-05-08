@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>数据与逻辑</title>
+      <link href="/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"/>
+      <url>/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>MVC、MVVM、ECS、IOC等框架思想启示我们，应该把数据和逻辑进行解耦。<br>抽象逻辑或者某一类的业务逻辑是可以通用，或者说便于修改的。<br>数据可以来源于真实或者人为创建，以数据驱动逻辑验证软件。</p></blockquote><h2 id="一、全局静态"><a href="#一、全局静态" class="headerlink" title="一、全局静态"></a>一、全局静态</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><blockquote><p>享受全局静态变量带来的便利时，要注意其危害性：<br>控制其规模、读写限制、内存释放。</p></blockquote><h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><ul><li>足够抽象、纯算法、复用次数多的逻辑，可以归类为工具、辅助器</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> experience </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>visionOS上架指南</title>
       <link href="/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/"/>
       <url>/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/</url>
@@ -27,7 +46,7 @@
       <link href="/2024/04/10/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/"/>
       <url>/2024/04/10/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/visionOS%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%97/</url>
       
-        <content type="html"><![CDATA[<h2 id="一、开发环境准备"><a href="#一、开发环境准备" class="headerlink" title="一、开发环境准备"></a>一、开发环境准备</h2><ul><li>必须Unity Pro、Enterprise、Industry。如果是Unity Personal或者Plus，<a href="https://unity.com/pages/pro-free-trial">Unity Pro适用申请</a></li><li>必须Apple Silicon + 国际版Unity(VisionOS Build Support(experimental))</li><li>Xcode下载Apple Vision Pro Simulator</li><li><a href="https://drive.google.com/drive/folders/1Oe-6bBCCmk7okbK832HWiYFbM8mV0XrZ">下载对应版本的VisionOS Template</a></li><li><a href="https://drive.google.com/drive/folders/1ZmWoS6NhrrmvabYia79hlvbyPV1mUN2p">下载对应版本的Play to Device Host</a></li></ul><h2 id="二、模拟器"><a href="#二、模拟器" class="headerlink" title="二、模拟器"></a>二、模拟器</h2><ul><li>切换为VisionOS(experimental)平台</li><li>Player中的Target Device选择Simulator SDK</li><li>PloySpatial配置；XR Plugin-in Management中勾选Apple visionOS；选择App Mode，填写Hands Tracking、World Sensing的描述；Fix Validation Rules。如果使用模版工程，则已经配置好了。</li><li>Build之后，用xcode打开，选择模拟器</li><li>下载的Play to Device Host.app拖入模拟器，Unity的Window-&gt;PolySpatial-&gt;Play to Device窗口中填入模拟器中Play to Device Host的ip，即可实时预览编辑器的内容</li></ul><h2 id="三、真机"><a href="#三、真机" class="headerlink" title="三、真机"></a>三、真机</h2><ul><li>TODO</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="一、开发环境准备"><a href="#一、开发环境准备" class="headerlink" title="一、开发环境准备"></a>一、开发环境准备</h2><ul><li>必须Unity Pro、Enterprise、Industry。如果是Unity Personal或者Plus，<a href="https://unity.com/pages/pro-free-trial">Unity Pro适用申请</a></li><li>必须Apple Silicon + 国际版Unity(VisionOS Build Support(experimental))</li><li>Xcode下载Apple Vision Pro Simulator</li><li><a href="https://drive.google.com/drive/folders/1Oe-6bBCCmk7okbK832HWiYFbM8mV0XrZ">下载对应版本的VisionOS Template</a></li><li><a href="https://drive.google.com/drive/folders/1ZmWoS6NhrrmvabYia79hlvbyPV1mUN2p">下载对应版本的Play to Device Host</a></li></ul><hr><p>xcode：version 15.3(15E204a)<br>visionOS：1.1(21O209)<br>unity：2022.3.17f1</p><h2 id="二、模拟器"><a href="#二、模拟器" class="headerlink" title="二、模拟器"></a>二、模拟器</h2><ul><li>切换为VisionOS(experimental)平台</li><li>Player中的Target Device选择Simulator SDK</li><li>PloySpatial配置；XR Plugin-in Management中勾选Apple visionOS；选择App Mode，填写Hands Tracking、World Sensing的描述；Fix Validation Rules。如果使用模版工程，则已经配置好了。</li><li>Build之后，用xcode打开，选择模拟器</li><li>下载的Play to Device Host.app拖入模拟器，Unity的Window-&gt;PolySpatial-&gt;Play to Device窗口中填入模拟器中Play to Device Host的ip，即可实时预览编辑器的内容</li></ul><h2 id="三、真机"><a href="#三、真机" class="headerlink" title="三、真机"></a>三、真机</h2><ul><li>TODO</li></ul>]]></content>
       
       
       
