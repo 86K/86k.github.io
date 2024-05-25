@@ -4,25 +4,6 @@
   
     
     <entry>
-      <title>数据与逻辑</title>
-      <link href="/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/"/>
-      <url>/2024/04/12/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/%E6%95%B0%E6%8D%AE%E4%B8%8E%E9%80%BB%E8%BE%91/</url>
-      
-        <content type="html"><![CDATA[<blockquote><p>MVC、MVVM、ECS、IOC等框架思想启示我们，应该把数据和逻辑进行解耦。<br>抽象逻辑或者某一类的业务逻辑是可以通用，或者说便于修改的。<br>数据可以来源于真实或者人为创建，以数据驱动逻辑验证软件。</p></blockquote><h2 id="一、全局静态"><a href="#一、全局静态" class="headerlink" title="一、全局静态"></a>一、全局静态</h2><h3 id="数据"><a href="#数据" class="headerlink" title="数据"></a>数据</h3><blockquote><p>享受全局静态变量带来的便利时，要注意其危害性：<br>控制其规模、读写限制、内存释放。</p></blockquote><h3 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h3><ul><li>足够抽象、纯算法、复用次数多的逻辑，可以归类为工具、辅助器</li></ul>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> experience </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>visionOS上架指南</title>
       <link href="/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/"/>
       <url>/2024/04/10/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/visionOS%E4%B8%8A%E6%9E%B6%E6%8C%87%E5%8D%97/</url>
